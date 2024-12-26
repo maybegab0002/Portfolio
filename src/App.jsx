@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import profileImage from '/public/assets/profile.png'
 
 function App() {
   const containerRef = useRef(null)
@@ -528,12 +529,12 @@ function App() {
                   viewport={{ once: true }}
                 >
                   <motion.img 
-                    src="/assets/profile.png" 
-                    alt="Gabriel Enciso"
-                    className="profile-image"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  src="/assets/profile.png"  // Remove the dot (.)
+                  alt="Gabriel Enciso"
+                  className="profile-image"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                />
                   <div className="profile-border" />
                 </motion.div>
 
@@ -584,7 +585,7 @@ function App() {
                     Gmail
                   </motion.a>
                   <motion.a
-                    href="/assets/CV.pdf"
+                    href="/assets/CV.pdf"  // Remove the dot (.)
                     download="Gabriel_Enciso_CV.pdf"
                     className="download-cv"
                     onMouseEnter={() => setHoveredLink(true)}
