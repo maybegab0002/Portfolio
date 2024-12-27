@@ -529,7 +529,7 @@ function App() {
                   viewport={{ once: true }}
                 >
                   <motion.img 
-                  src="/assets/profile.png"  // Remove the dot (.)
+                  src={profileImage}
                   alt="Gabriel Enciso"
                   className="profile-image"
                   whileHover={{ scale: 1.02 }}
@@ -585,7 +585,7 @@ function App() {
                     Gmail
                   </motion.a>
                   <motion.a
-                    href="/assets/CV.pdf"  // Remove the dot (.)
+                    href="/public/assets/CV.pdf"
                     download="Gabriel_Enciso_CV.pdf"
                     className="download-cv"
                     onMouseEnter={() => setHoveredLink(true)}
