@@ -252,7 +252,7 @@ html, body {
 /* Side Title */
 .side-title {
   position: absolute;
-  right: -2rem;
+  right: clamp(-3rem, -4vw, -2rem);
   top: 11%;
   transform: translateY(-50%);
   display: flex;
@@ -267,22 +267,56 @@ html, body {
 .side-title::after {
   content: "";
   width: 1px;
-  height: 4rem;
+  height: clamp(3rem, 4vw, 4rem);
   background: rgba(255, 255, 255, 0.3);
   display: block;
   margin-top: 1.5rem;
 }
 
+@media (max-width: 1024px) {
+  .side-title {
+    writing-mode: horizontal-tb;
+    right: auto;
+    left: 0;
+    top: 2rem;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .side-title::after {
+    width: clamp(3rem, 4vw, 4rem);
+    height: 1px;
+    margin-top: 0;
+    margin-left: 1.5rem;
+  }
+
+  .projects-grid {
+    margin-left: 0;
+    margin-top: 6rem;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .side-title {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+  }
+}
+
 /* Project Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  margin-left: 8rem;
+  margin-left: 6rem;
   padding: 0 4rem;
+  padding-right: 6rem;
 }
 
 .project-card {
@@ -295,7 +329,7 @@ html, body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.03);
   border-radius: 4px;
-  padding: 1.25rem;
+  padding: 1rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -307,7 +341,7 @@ html, body {
 
 .project-card img {
   width: 100%;
-  height: 140px;
+  height: 120px;
   object-fit: cover;
   border-radius: 2px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -320,41 +354,61 @@ html, body {
 }
 
 .project-info {
-  margin-top: 1.25rem;
+  margin-top: 1rem;
 }
 
 .project-info h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   line-height: 1.2;
 }
 
 .project-info p {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 @media (min-width: 1440px) {
   .projects-grid {
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    max-width: 1300px;
   }
   
   .project-card img {
-    height: 160px;
+    height: 140px;
   }
 }
 
 @media (max-width: 1200px) {
   .projects-grid {
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    margin-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    margin-left: 0;
+    margin-top: 6rem;
+    padding: 0 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .projects-grid {
-    grid-template-columns: repeat(1, minmax(280px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 1.5rem;
+  }
+  
+  .project-card {
+    padding: 0.875rem;
+  }
+  
+  .project-card img {
+    height: 110px;
   }
 }
 
@@ -366,47 +420,39 @@ html, body {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.01);
   border-radius: 12px;
+  padding: 2rem;
 }
 
 .design-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 2rem;
   padding: 20px;
   padding-bottom: 100px;
-  animation: marquee 15s linear infinite;
-  will-change: transform;
+  animation: scrollDown 20s linear infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
 }
 
 .design-grid:hover {
   animation-play-state: paused;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-33.33%);
-  }
-}
-
 .design-card {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3;
   cursor: none;
-}
-
-.design-card:nth-child(3n-1) {
-  margin-top: 40px;
-}
-
-.design-card:nth-child(3n) {
-  margin-top: 80px;
 }
 
 .design-card img {
@@ -425,8 +471,8 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   transform: translateY(100%);
   transition: transform 0.3s ease;
 }
@@ -436,24 +482,48 @@ html, body {
 }
 
 .design-overlay h3 {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
+  color: white;
 }
 
 .design-overlay p {
   font-size: 0.875rem;
   line-height: 1.4;
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 1200px) {
+  .design-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .design-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .design-grid-container {
+    padding: 1rem;
+  }
+  
+  .design-overlay {
+    padding: 1rem;
+  }
 }
 
 /* Animated Text */
 .animated-text-container {
   position: relative;
-  height: 8vw;
-  min-height: 3rem;
+  height: clamp(4rem, 10vw, 8rem);
   overflow: hidden;
   margin-top: 0.5rem;
+  width: 100%;
+  max-width: 800px;
 }
 
 .animated-text {
@@ -465,6 +535,7 @@ html, body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
+  overflow: visible;
 }
 
 .animated-text.active {
@@ -493,11 +564,13 @@ html, body {
 
 /* Text Styles */
 .heading-xl {
-  font-size: clamp(2.5rem, 8vw, 6rem);
-  line-height: 1;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.1;
   font-weight: bold;
   letter-spacing: -0.02em;
   white-space: nowrap;
+  width: 100%;
+  overflow: visible;
 }
 
 .heading-lg {
@@ -519,6 +592,15 @@ html, body {
   background: linear-gradient(to right, #fff 20%, rgba(255, 255, 255, 0.5));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.section-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+  position: relative;
+  overflow: visible;
 }
 
 /* Hover Effect */
@@ -699,3 +781,5 @@ html, body {
   width: 18px;
   height: 18px;
 }
+
+

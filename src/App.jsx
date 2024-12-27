@@ -3,6 +3,24 @@ import { motion } from 'framer-motion'
 import profileImage from '/public/assets/profile.png'
 import cvImage from '/public/assets/CV.png'
 
+// Import images
+import frame142 from './images/Frame-142.png';
+import frame143 from './images/Frame-143.png';
+import havahills from './images/HAVAHILLS-ESTATE.png';
+import highgrove from './images/HIGHGROVE.png';
+import livingWater from './images/LIVING-WATER.png';
+import lws from './images/LWS.png';
+import luxuryFinish from './images/Luxury-Finish.png';
+import marketingLws from './images/MARKETING-POST-LWS.png';
+import pleromaBare from './images/PLEROMA--Bare-Finish.png';
+import pleromaStandard from './images/PLEROMA--Standard-Finish.png';
+import simplicity from './images/SIMPLICITY.png';
+import serenity from './images/Serenity.png';
+import serenityComp from './images/Serenity-Sample-Computation.png';
+import simplicityComp from './images/Simplicity---Sample-Computation.png';
+import waivedFee from './images/WAIVED-MISC.-FEE.png';
+import frontPoster from './images/fRONT-POSTER.png';
+
 function App() {
   const containerRef = useRef(null)
   const cursorDotRef = useRef(null)
@@ -198,28 +216,6 @@ function App() {
     return () => window.removeEventListener('wheel', handleWheel);
   }, [isHoveringGrid]);
 
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - designGridRef.current.offsetLeft);
-    setScrollLeft(designGridRef.current.scrollLeft);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - designGridRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    designGridRef.current.scrollLeft = scrollLeft - walk;
-  };
-
   // Development Projects data
   const devProjects = [
     {
@@ -252,43 +248,87 @@ function App() {
     }
   ]
 
-  // Design works data
+  // Design Works data
   const designWorks = [
     {
-      title: "Tech Brand Identity",
-      description: "Complete brand identity design including logo, color palette, and brand guidelines",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-      category: "Brand Design"
+      title: "Frame 142",
+      type: "Marketing Design",
+      image: frame142
     },
     {
-      title: "Mobile App UI Kit",
-      description: "Comprehensive UI kit with 100+ components for health and fitness applications",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-      category: "UI Design"
+      title: "Frame 143",
+      type: "Marketing Design",
+      image: frame143
     },
     {
-      title: "Marketing Campaign",
-      description: "Digital marketing campaign assets including social media, web banners, and email templates",
-      image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-      category: "Marketing Design"
+      title: "Havahills Estate",
+      type: "Real Estate Marketing",
+      image: havahills
     },
     {
-      title: "Product Packaging",
-      description: "Modern and sustainable packaging design for an eco-friendly cosmetics brand",
-      image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-      category: "Packaging"
+      title: "Highgrove",
+      type: "Real Estate Marketing",
+      image: highgrove
     },
     {
-      title: "Event Branding",
-      description: "Complete event branding including posters, banners, and social media assets",
-      image: "https://images.unsplash.com/photo-1565339119519-c9eaa1918b9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-      category: "Brand Design"
+      title: "Living Water",
+      type: "Real Estate Marketing",
+      image: livingWater
     },
     {
-      title: "Motion Graphics",
-      description: "Animated promotional content and brand videos for digital platforms",
-      image: "https://images.unsplash.com/photo-1554868124-e1b06886c8eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-      category: "Motion Design"
+      title: "Living Water Services",
+      type: "Marketing Post",
+      image: lws
+    },
+    {
+      title: "Luxury Finish",
+      type: "Real Estate Marketing",
+      image: luxuryFinish
+    },
+    {
+      title: "LWS Marketing",
+      type: "Social Media",
+      image: marketingLws
+    },
+    {
+      title: "Pleroma - Bare Finish",
+      type: "Real Estate Marketing",
+      image: pleromaBare
+    },
+    {
+      title: "Pleroma - Standard Finish",
+      type: "Real Estate Marketing",
+      image: pleromaStandard
+    },
+    {
+      title: "Simplicity",
+      type: "Real Estate Marketing",
+      image: simplicity
+    },
+    {
+      title: "Serenity",
+      type: "Real Estate Marketing",
+      image: serenity
+    },
+    {
+      title: "Serenity Computation",
+      type: "Marketing Material",
+      image: serenityComp
+    },
+    {
+      title: "Simplicity Computation",
+      type: "Marketing Material",
+      image: simplicityComp
+    },
+    {
+      title: "Waived Misc Fee",
+      type: "Marketing Material",
+      image: waivedFee
+    },
+    {
+      title: "Front Poster",
+      type: "Marketing Material",
+      image: frontPoster
     }
   ]
 
@@ -476,20 +516,13 @@ function App() {
 
           {/* Design Section */}
           <section className="scroll-section">
-            <div className="section-content relative">
-              <motion.h2 
-                className="heading-lg mb-8 text-left max-w-[200px] leading-tight absolute left-[-120px]"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              >
-                Graphic &<br />Brand Design
-              </motion.h2>
+            <div className="section-content">
+              <h2 className="text-3xl font-bold mb-8">Graphic Design Projects</h2>
               <div className="design-grid-container">
                 <div className="design-grid">
-                  {[...designWorks, ...designWorks, ...designWorks].map((design, index) => (
+                  {[...designWorks, ...designWorks].map((design, index) => (
                     <motion.div
-                      key={`original-${index}`}
+                      key={`design-${index}`}
                       className="design-card"
                       initial={{ opacity: 1, y: 0 }}
                       onMouseEnter={() => setHoveredLink(true)}
@@ -501,7 +534,7 @@ function App() {
                         loading="eager"
                       />
                       <div className="design-overlay">
-                        <span className="text-xs text-blue-400 mb-1">{design.category}</span>
+                        <span className="text-xs text-blue-400 mb-1">{design.type}</span>
                         <h3>{design.title}</h3>
                         <p>{design.description}</p>
                       </div>
