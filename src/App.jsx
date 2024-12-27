@@ -585,7 +585,7 @@ function App() {
                     Gmail
                   </motion.a>
                   <motion.a
-                    href="/public/assets/CV.pdf"
+                    href="/assets/CV.pdf"
                     download="Gabriel_Enciso_CV.pdf"
                     className="download-cv"
                     onMouseEnter={() => setHoveredLink(true)}
