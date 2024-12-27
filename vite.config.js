@@ -8,5 +8,6 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true
-  }
+  },
+  assetsInclude: ['**/*.pdf'] // Add PDF files to the asset include list
 })

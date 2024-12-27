@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import profileImage from '/public/assets/profile.png'
+import cvFile from '/public/assets/CV.pdf'
 
 function App() {
   const containerRef = useRef(null)
@@ -585,7 +586,7 @@ function App() {
                     Gmail
                   </motion.a>
                   <motion.a
-                    href="/Portfolio/assets/CV.pdf"
+                    href={cvFile}
                     download="Gabriel_Enciso_CV.pdf"
                     className="download-cv"
                     onMouseEnter={() => setHoveredLink(true)}
